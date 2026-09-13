@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kerby Z. Enova - Information Systems & Volunteer</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="70">
+
+    <!-- Rain Container for the Music Effect -->
+    <div id="rainContainer" class="rain-container"></div>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress-container">
+        <div class="scroll-progress-bar" id="myBar"></div>
+    </div>
+
+    <!-- Animated Floating Background -->
+    <div class="bg-animation">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+        <div class="glow-orb orb-3"></div>
+    </div>
+
+    <!-- Navigation Bar (Facebook-Style 3-Column Modern Header) -->
+    <nav id="navbar" class="navbar navbar-dark fixed-top fb-navbar">
+        <div class="container-fluid px-lg-4 fb-nav-container">
+            
+            <!-- LEFT: Brand Avatar & Facebook-Style Search Input -->
+            <div class="fb-nav-left">
+                <a class="fb-brand-wrap" href="#home" title="Kerby Zamudio Enova">
+                    <span class="fb-brand-avatar">K</span>
+                    <span class="fb-brand-name d-none d-sm-inline">Kerby Enova</span>
+                </a>
+                
+                <!-- Facebook-Style Integrated Search Input -->
+                <div class="fb-search-bar" id="cmdPaletteBtn" title="Search Portfolio (Ctrl+K)">
+                    <i class="fas fa-search fb-search-icon"></i>
+                    <span class="fb-search-placeholder d-none d-md-inline">Search portfolio &amp; commands...</span>
+                    <kbd class="cmd-kbd ms-2 d-none d-lg-inline">Ctrl K</kbd>
+                </div>
+            </div>
+
+            <!-- CENTER: Primary Navigation Tabs (Facebook-Style with Active Indicators) -->
+            <div class="fb-nav-center d-none d-xl-flex" id="fbNavCenter">
+                <a class="fb-tab-item active" href="#home" data-section="home" title="Home">
+                    <i class="fas fa-home fb-tab-icon"></i>
+                    <span class="fb-tab-label">Home</span>
+                </a>
+                <a class="fb-tab-item" href="#about" data-section="about" title="About & Education">
+                    <i class="fas fa-user fb-tab-icon"></i>
+                    <span class="fb-tab-label">About</span>
+                </a>
+                <a class="fb-tab-item" href="#experience" data-section="experience" title="Projects & Experience">
+                    <i class="fas fa-briefcase fb-tab-icon"></i>
+                    <span class="fb-tab-label">Projects</span>
+                </a>
+                <a class="fb-tab-item" href="#skills-hobbies" data-section="skills-hobbies" title="Skills Playground">
+                    <i class="fas fa-code fb-tab-icon"></i>
+                    <span class="fb-tab-label">Skills</span>
+                </a>
+                <a class="fb-tab-item" href="#gallery" data-section="gallery" title="Photo Gallery">
+                    <i class="fas fa-images fb-tab-icon"></i>
+                    <span class="fb-tab-label">Gallery</span>
+                </a>
+                <a class="fb-tab-item" href="#music" data-section="music" title="MCR Music Player">
+                    <i class="fas fa-compact-disc fb-tab-icon"></i>
+                    <span class="fb-tab-label">Music</span>
+                </a>
+                <a class="fb-tab-item" href="#contact" data-section="contact" title="Contact Me">
+                    <i class="fas fa-paper-plane fb-tab-icon"></i>
+                    <span class="fb-tab-label">Contact</span>
+                </a>
+            </div>
+
+            <!-- RIGHT: Utilities & Action Tools -->
+            <div class="fb-nav-right">
+                <!-- Resume Button -->
+                <button type="button" class="fb-resume-btn" data-bs-toggle="modal" data-bs-target="#resumeModal" title="View & Print Resume CV">
+                    <i class="fas fa-file-pdf"></i>
+                    <span class="d-none d-sm-inline ms-1">Resume</span>
+                </button>
+
+                <!-- Mini Audio Equalizer Visualizer (Bounces dynamically when music plays) -->
+                <div class="fb-audio-wave" id="navbarAudioWave" title="MCR Audio Equalizer">
+                    <span class="mini-wave-bar"></span>
+                    <span class="mini-wave-bar"></span>
+                    <span class="mini-wave-bar"></span>
+                    <span class="mini-wave-bar"></span>
+                </div>
+
+                <!-- SFX Sound Effects Toggle -->
+                <button type="button" id="sfxToggleBtn" class="fb-circle-btn" title="Toggle Tactile Sound Effects (SFX)">
+                    <i class="fas fa-volume-up" id="sfxIcon"></i>
+                </button>
+
+                <!-- Interactive Terminal Launcher -->
+                <button type="button" id="navTerminalBtn" class="fb-circle-btn d-none d-sm-inline-flex" title="Open Interactive Terminal (CLI)">
+                    <i class="fas fa-terminal"></i>
+                </button>
+
+                <!-- MCR Theme Era Switcher -->
+                <div class="dropdown">
+                    <button class="fb-circle-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" title="Switch Theme Era">
+                        <i class="fas fa-palette"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end glass-dropdown mt-2 shadow-lg">
+                        <li class="dropdown-header text-silver small text-uppercase fw-bold">Select MCR Theme</li>
+                        <li><button type="button" class="dropdown-item era-select-btn active" data-era="classic"><i class="fas fa-fire text-warning me-2"></i>Classic Orange</button></li>
+                        <li><button type="button" class="dropdown-item era-select-btn" data-era="revenge"><i class="fas fa-tint text-danger me-2"></i>Three Cheers (Revenge)</button></li>
+                        <li><button type="button" class="dropdown-item era-select-btn" data-era="black-parade"><i class="fas fa-skull text-light me-2"></i>The Black Parade</button></li>
+                        <li><button type="button" class="dropdown-item era-select-btn" data-era="danger-days"><i class="fas fa-bolt text-info me-2"></i>Danger Days</button></li>
+                    </ul>
+                </div>
+
+                <!-- Subtle Developer Mode Pill (Prank Trigger) -->
+                <button type="button" class="fb-dev-pill" id="prankTrigger" title="Developer Status / Beta Mode">
+                    <span class="dev-status-dot"></span>
+                    <span class="d-none d-md-inline">Dev</span>
+                </button>
+
+                <!-- Mobile Hamburger Toggle -->
+                <button class="fb-circle-btn d-xl-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation" aria-controls="navbarNav">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Menu -->
+        <div class="collapse d-xl-none w-100" id="navbarNav">
+            <div class="fb-mobile-drawer">
+                <div class="fb-mobile-grid">
+                    <a class="fb-mobile-item active" href="#home"><i class="fas fa-home me-2"></i>Home</a>
+                    <a class="fb-mobile-item" href="#about"><i class="fas fa-user me-2"></i>About</a>
+                    <a class="fb-mobile-item" href="#experience"><i class="fas fa-briefcase me-2"></i>Projects</a>
+                    <a class="fb-mobile-item" href="#skills-hobbies"><i class="fas fa-code me-2"></i>Skills</a>
+                    <a class="fb-mobile-item" href="#gallery"><i class="fas fa-images me-2"></i>Gallery</a>
+                    <a class="fb-mobile-item" href="#music"><i class="fas fa-compact-disc me-2"></i>Music</a>
+                    <a class="fb-mobile-item" href="#contact"><i class="fas fa-paper-plane me-2"></i>Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero / Profile Section -->
+    <section id="home" class="min-vh-100 d-flex align-items-center text-center pt-5 reveal">
+        <div class="container">
+            <img src="profile.jpg" alt="Kerby Enova" class="profile-img mb-3 shadow-lg">
+            
+            <!-- Live Availability Beacon -->
+            <div>
+                <div class="work-status-badge">
+                    <span class="status-beacon"></span> Available for OJT & IS Projects
+                </div>
+            </div>
+
+            <h1 class="display-4 fw-bold text-white mb-2">Hi, I'm <span class="gradient-text">Kerby Z. Enova</span></h1>
+            
+            <h3 class="text-silver mb-3">I am a <span id="typewriter" class="text-orange"></span><span class="cursor">|</span></h3>
+            
+            <p class="lead text-light mb-3">BS Information Systems | Camarines Norte State College</p>
+            
+            <!-- Facebook-Style Profile Intro Badges / Quick Stats -->
+            <div class="intro-stats-dock d-flex flex-wrap justify-content-center gap-2 mb-4">
+                <span class="intro-stat-badge"><i class="fas fa-graduation-cap me-1 text-orange"></i> 3rd Year BS IS</span>
+                <span class="intro-stat-badge"><i class="fas fa-microchip me-1 text-orange"></i> Hardware &amp; IoT Diagnostics</span>
+                <span class="intro-stat-badge"><i class="fas fa-hands-helping me-1 text-orange"></i> Red Cross Youth Adviser</span>
+                <span class="intro-stat-badge"><i class="fas fa-map-marker-alt me-1 text-orange"></i> Daet &amp; Paracale, PH</span>
+            </div>
+
+            <!-- Facebook-Style Visitor Reactions Dock -->
+            <div class="visitor-reaction-container mb-4">
+                <div class="reaction-dock">
+                    <span class="reaction-dock-label text-silver small d-none d-sm-inline"><i class="fas fa-bolt text-orange me-1"></i>Leave an Echo:</span>
+                    <button type="button" class="reaction-btn" data-reaction="rock" title="Rock Out! (MCR Venom)">
+                        <span class="reaction-emoji">🤘</span>
+                        <span class="reaction-count" id="count-rock">42</span>
+                    </button>
+                    <button type="button" class="reaction-btn" data-reaction="fire" title="Fire Code! (Projects)">
+                        <span class="reaction-emoji">🔥</span>
+                        <span class="reaction-count" id="count-fire">38</span>
+                    </button>
+                    <button type="button" class="reaction-btn" data-reaction="killjoy" title="Killjoy! (Danger Days)">
+                        <span class="reaction-emoji">⚡</span>
+                        <span class="reaction-count" id="count-killjoy">29</span>
+                    </button>
+                    <button type="button" class="reaction-btn" data-reaction="fuel" title="Dev Fuel! (Coffee)">
+                        <span class="reaction-emoji">☕</span>
+                        <span class="reaction-count" id="count-fuel">25</span>
+                    </button>
+                    <button type="button" class="reaction-btn" data-reaction="goth" title="Helena Goth! (Black Parade)">
+                        <span class="reaction-emoji">🖤</span>
+                        <span class="reaction-count" id="count-goth">51</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="social-links mb-4">
+                <a href="https://github.com/Curbiee" target="_blank" class="text-white mx-2 fs-4" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.facebook.com/curbieeReal" target="_blank" class="text-white mx-2 fs-4" title="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.youtube.com/@kerbyenova1599" target="_blank" class="text-white mx-2 fs-4" title="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.tiktok.com/@curbie404.txt" target="_blank" class="text-white mx-2 fs-4" title="TikTok"><i class="fab fa-tiktok"></i></a>
+            </div>
+            
+            <div class="d-flex flex-wrap justify-content-center gap-2">
+                <button class="btn btn-custom-orange px-4 py-2" data-bs-toggle="modal" data-bs-target="#videoModal">
+                    <i class="fas fa-play-circle me-2"></i> Watch Intro
+                </button>
+                <button class="btn btn-outline-custom px-4 py-2" data-bs-toggle="modal" data-bs-target="#resumeModal">
+                    <i class="fas fa-file-pdf me-2"></i> View Resume
+                </button>
+                <button class="btn btn-outline-custom px-3 py-2" id="shareProfileBtn" title="Share Portfolio Link">
+                    <i class="fas fa-share-alt me-1"></i> Share
+                </button>
+                <a href="#about" class="btn btn-outline-custom px-4 py-2">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me & Education -->
+    <section id="about" class="py-5">
+        <div class="container">
+            <div class="row align-items-center glass-card p-4 p-md-5 reveal">
+                <div class="col-lg-12">
+                    <h2 class="text-orange fw-bold mb-4 text-center">About Me</h2>
+                    <p class="text-silver text-center mb-5">My goal is to develop my skills in information systems and technology while combining technical problem-solving with creativity. I aim to build practical systems and digital solutions that are useful, efficient, and user-focused.</p>
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <h4 class="text-white"><i class="fas fa-graduation-cap text-orange me-2"></i> Education</h4>
+                            <ul class="list-unstyled mt-3 text-silver">
+                                <li class="mb-3">
+                                    <strong class="text-orange">Bachelor of Science in Information Systems</strong><br>
+                                    <span class="text-light-gray">Camarines Norte State College, Daet, C.N. (2024 - Present)</span>
+                                </li>
+                                <li>
+                                    <strong class="text-orange">Technical-Vocational-Livelihood (ICT)</strong><br>
+                                    <span class="text-light-gray">Paracale National High School, Paracale, C.N. (2022 - 2024)</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6 mb-4 text-md-end">
+                            <h4 class="text-white"><i class="fas fa-address-card text-orange me-2"></i> Contact Info</h4>
+                            <ul class="list-unstyled mt-3 text-silver">
+                                <li><i class="fas fa-map-marker-alt me-2"></i>Purok 1, Malaguit • Paracale, Camarines Norte</li>
+                                <li class="mt-2"><i class="fas fa-envelope me-2"></i>kerbyenova89@gmail.com <button type="button" class="copy-info-btn" data-copy="kerbyenova89@gmail.com" title="Copy Email to Clipboard"><i class="fas fa-copy"></i> Copy</button></li>
+                                <li class="mt-2"><i class="fas fa-phone me-2"></i>095571596198 <button type="button" class="copy-info-btn" data-copy="095571596198" title="Copy Phone Number"><i class="fas fa-copy"></i> Copy</button></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience & Leadership (Flipping Cards) -->
+    <section id="experience" class="py-5">
+        <div class="container reveal">
+            <div class="text-center mb-4">
+                <h2 class="text-orange fw-bold">Experience & Projects</h2>
+                <p class="text-silver">Hover or tap any card to flip between project highlights and technical specifications.</p>
+            </div>
+
+            <!-- Project Category Filter & Flip All Controls -->
+            <div class="exp-filter-nav">
+                <button type="button" class="exp-filter-btn active" data-exp-filter="all"><i class="fas fa-th me-1"></i> All Work</button>
+                <button type="button" class="exp-filter-btn" data-exp-filter="hardware"><i class="fas fa-microchip me-1"></i> Hardware & Systems</button>
+                <button type="button" class="exp-filter-btn" data-exp-filter="systems"><i class="fas fa-laptop-code me-1"></i> Systems Dev & UI/UX</button>
+                <button type="button" class="exp-filter-btn" data-exp-filter="leadership"><i class="fas fa-hands-helping me-1"></i> Leadership & RCY</button>
+                <button type="button" class="exp-flip-all-btn ms-lg-2" id="flipAllProjectsBtn" title="Flip all cards at once">
+                    <i class="fas fa-sync-alt" id="flipAllIcon"></i> <span id="flipAllLabel">Flip All</span>
+                </button>
+            </div>
+
+            <div class="row g-4" id="experienceGrid">
+                
+                <!-- Card 1: KARTEL-Daet Work Immersion -->
+                <div class="col-md-6 col-lg-3 exp-item-col" data-category="hardware">
+                    <div class="flip-card" tabindex="0" role="region" aria-label="KARTEL-Daet Work Immersion Card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <span class="flip-card-badge"><i class="fas fa-redo"></i> Flip</span>
+                                <div class="mb-3 text-orange"><i class="fas fa-tools fa-3x"></i></div>
+                                <h4 class="text-white">Work Immersion</h4>
+                                <h6 class="text-orange">KARTEL-Daet</h6>
+                                <span class="badge bg-orange text-dark mt-3">2024</span>
+                            </div>
+                            <div class="flip-card-back">
+                                <span class="flip-card-badge"><i class="fas fa-redo"></i> Flip</span>
+                                <h5 class="text-white fw-bold mb-2">Key Highlights:</h5>
+                                <p class="text-silver small text-start mb-3">
+                                    Assisting customers with tech essentials and refurbished laptops. Responsibilities included operating PisoNet systems, hardware diagnostics, preventive maintenance, CCTV installations, and network device setup.
+                                </p>
+                                <button type="button" class="btn btn-sm btn-outline-custom w-100 open-case-study mt-auto" data-project="kartel">
+                                    <i class="fas fa-microchip me-1"></i> View Tech Logs
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Academic Project -->
+                <div class="col-md-6 col-lg-3 exp-item-col" data-category="systems">
+                    <div class="flip-card" tabindex="0" role="region" aria-label="Optimizing Pabirik Laundry House Project Card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <span class="flip-card-badge"><i class="fas fa-redo"></i> Flip</span>
+                                <div class="mb-3 text-orange"><i class="fas fa-laptop-code fa-3x"></i></div>
+                                <h4 class="text-white">Lead Dev & UI/UX</h4>
+                                <h6 class="text-orange">Optimizing Pabirik Laundry</h6>
+                                <span class="badge bg-orange text-dark mt-3">Academic Project</span>
+                            </div>
+                            <div class="flip-card-back">
+                                <span class="flip-card-badge"><i class="fas fa-redo"></i> Flip</span>
+                                <h5 class="text-white fw-bold mb-2">Project Overview:</h5>
+                                <p class="text-silver small text-start mb-3">
+                                    Spearheaded system analysis and UI/UX design for a comprehensive digital laundry transaction system. Built high-fidelity wireframing in Figma and designed user-centered workflows bridging tech analysis and software design.
+                                </p>
+                                <button type="button" class="btn btn-sm btn-outline-custom w-100 open-case-study mt-auto" data-project="pabirik">
+                                    <i class="fas fa-sitemap me-1"></i> System Blueprint
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Red Cross Youth -->
+                <div class="col-md-6 col-lg-3 exp-item-col" data-category="leadership">
+                    <div class="flip-card" tabindex="0" role="region" aria-label="Red Cross Youth Leadership Card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <span class="flip-card-badge"><i class="fas fa-redo"></i> Flip</span>
+                                <div class="mb-3 text-orange"><i class="fas fa-hand-holding-heart fa-3x"></i></div>
+                                <h4 class="text-white">President / Adviser</h4>
+                                <h6 class="text-orange">RCY Paracale Chapter</h6>
+                                <span class="badge bg-orange text-dark mt-3">2023 - 2025</span>
+                            </div>
+                            <div class="flip-card-back">
+                                <span class="flip-card-badge"><i class="fas fa-redo"></i> Flip</span>
+                                <h5 class="text-white fw-bold mb-2">Key Highlights:</h5>
+                                <p class="text-silver small text-start mb-3">
+                                    Organized humanitarian programs and community outreach drives. Actively managed volunteer teams during municipal events and facilitated first aid training, fostering emergency preparedness and service leadership.
+                                </p>
+                                <button type="button" class="btn btn-sm btn-outline-custom w-100 open-case-study mt-auto" data-project="rcy">
+                                    <i class="fas fa-award me-1"></i> Leadership Portfolio
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4: Network & Commercial Systems Integration -->
+                <div class="col-md-6 col-lg-3 exp-item-col" data-category="hardware">
+                    <div class="flip-card" tabindex="0" role="region" aria-label="Commercial Network and PisoNet Hardening Card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <span class="flip-card-badge"><i class="fas fa-redo"></i> Flip</span>
+                                <div class="mb-3 text-orange"><i class="fas fa-network-wired fa-3x"></i></div>
+                                <h4 class="text-white">Network & CCTV</h4>
+                                <h6 class="text-orange">Commercial Systems</h6>
+                                <span class="badge bg-orange text-dark mt-3">Field Deployment</span>
+                            </div>
+                            <div class="flip-card-back">
+                                <span class="flip-card-badge"><i class="fas fa-redo"></i> Flip</span>
+                                <h5 class="text-white fw-bold mb-2">Deployment Highlights:</h5>
+                                <p class="text-silver small text-start mb-3">
+                                    Designed commercial LAN topology, bandwidth allocation for gaming stations, DVR surveillance remote streaming, and physical security hardening for coin-op PisoNet terminals.
+                                </p>
+                                <button type="button" class="btn btn-sm btn-outline-custom w-100 open-case-study mt-auto" data-project="pisonet-net">
+                                    <i class="fas fa-server me-1"></i> Network Specs
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills & Interests (Flipping Cards) -->
+    <section id="skills-hobbies" class="py-5">
+        <div class="container reveal">
+            <div class="text-center mb-5">
+                <h2 class="text-orange fw-bold">Skills & Interests</h2>
+                <p class="text-silver">A quick flip to see what I bring to the table technically and creatively.</p>
+            </div>
+            <div class="row g-4 justify-content-center">
+                
+                <!-- Card 1: Technical Skills -->
+                <div class="col-lg-4">
+                    <div class="flip-card" tabindex="0" role="region" aria-label="Technical Skills Card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <span class="flip-card-badge"><i class="fas fa-redo"></i> Flip</span>
+                                <div class="mb-3 text-orange"><i class="fas fa-microchip fa-3x"></i></div>
+                                <h4 class="text-white">Technical Skills</h4>
+                                <p class="text-silver small mt-2">Software, Hardware & Networking</p>
+                            </div>
+                            <div class="flip-card-back">
+                                <span class="flip-card-badge"><i class="fas fa-redo"></i> Flip</span>
+                                <h5 class="text-white fw-bold mb-3">My Capabilities:</h5>
+                                <p class="text-silver small text-start mb-0">
+                                    I possess a strong technical foundation, being highly proficient in computer troubleshooting, hardware and software installation, and Microsoft Office applications. I also hold intermediate skills in Java programming and network setup, alongside practical expertise in CCTV maintenance and ensuring clean, efficient system cable management.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Laboratory & Languages -->
+                <div class="col-lg-4">
+                    <div class="flip-card" tabindex="0" role="region" aria-label="Lab and Languages Card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <span class="flip-card-badge"><i class="fas fa-redo"></i> Flip</span>
+                                <div class="mb-3 text-orange"><i class="fas fa-language fa-3x"></i></div>
+                                <h4 class="text-white">Lab & Languages</h4>
+                                <p class="text-silver small mt-2">Communication & Diagnostic Tools</p>
+                            </div>
+                            <div class="flip-card-back">
+                                <span class="flip-card-badge"><i class="fas fa-redo"></i> Flip</span>
+                                <h5 class="text-white fw-bold mb-3">Communication & Tools:</h5>
+                                <p class="text-silver small text-start mb-0">
+                                    I am fully fluent in Filipino and possess proficient conversational English skills, allowing me to communicate effectively in both retail and academic environments. In the laboratory setting, I am well-versed in utilizing essential computer hardware diagnostic tools and executing routine system maintenance configurations.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Interests -->
+                <div class="col-lg-4">
+                    <div class="flip-card" tabindex="0" role="region" aria-label="Interests and Passions Card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <span class="flip-card-badge"><i class="fas fa-redo"></i> Flip</span>
+                                <div class="mb-3 text-orange"><i class="fas fa-guitar fa-3x"></i></div>
+                                <h4 class="text-white">Interests</h4>
+                                <p class="text-silver small mt-2">Hobbies & Passions</p>
+                            </div>
+                            <div class="flip-card-back">
+                                <span class="flip-card-badge"><i class="fas fa-redo"></i> Flip</span>
+                                <h5 class="text-white fw-bold mb-3">Beyond the Screen:</h5>
+                                <p class="text-silver small text-start mb-0">
+                                    Beyond academics and tech, I am deeply passionate about music, frequently playing instruments and exploring new sounds. I also value an active lifestyle through cycling and fitness. When I'm not studying, you can often find me learning about the latest technology trends, troubleshooting gadgets, or honing my skills in creative storytelling and theatrical scriptwriting.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Skills Playground -->
+            <div class="mt-5 pt-4">
+                <div class="text-center mb-4">
+                    <h3 class="text-white fw-bold"><i class="fas fa-layer-group text-orange me-2"></i>Skills</h3>
+                    <p class="text-silver small">Some Skills i learned along the way</p>
+                </div>
+
+                <!-- Category Filters -->
+                <div class="skills-filter-nav">
+                    <button type="button" class="category-pill-btn active" data-filter="all"><i class="fas fa-th-large me-1"></i> All Skills</button>
+                    <button type="button" class="category-pill-btn" data-filter="dev"><i class="fas fa-code me-1"></i> Code & Web</button>
+                    <button type="button" class="category-pill-btn" data-filter="hardware"><i class="fas fa-microchip me-1"></i> Hardware & Systems</button>
+                    <button type="button" class="category-pill-btn" data-filter="tools"><i class="fas fa-network-wired me-1"></i> Networking & Tools</button>
+                    <button type="button" class="category-pill-btn" data-filter="leadership"><i class="fas fa-hands-helping me-1"></i> Leadership & RCY</button>
+                </div>
+
+                <!-- Skill Cards Grid -->
+                <div class="row g-4" id="skillsGrid">
+                    <!-- Dev -->
+                    <div class="col-md-6 col-lg-3 skill-item-col" data-category="dev">
+                        <div class="skill-card-item tilt-card flashlight-card">
+                            <div class="skill-icon-wrap"><i class="fab fa-java"></i></div>
+                            <h5 class="text-white fw-bold mb-1">Java Programming</h5>
+                            <span class="badge bg-orange text-dark mb-2">Core Language</span>
+                            <p class="text-silver small mb-0">Object-oriented programming, data structures, and algorithm design.</p>
+                            <div class="skill-progress-track">
+                                <div class="skill-level-fill" style="width: 78%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 skill-item-col" data-category="dev">
+                        <div class="skill-card-item tilt-card flashlight-card">
+                            <div class="skill-icon-wrap"><i class="fab fa-html5"></i></div>
+                            <h5 class="text-white fw-bold mb-1">Frontend (HTML/CSS/JS)</h5>
+                            <span class="badge bg-orange text-dark mb-2">Web Development</span>
+                            <p class="text-silver small mb-0">Bootstrap 5, modern CSS custom properties, DOM manipulation, responsive UI.</p>
+                            <div class="skill-progress-track">
+                                <div class="skill-level-fill" style="width: 88%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Hardware -->
+                    <div class="col-md-6 col-lg-3 skill-item-col" data-category="hardware">
+                        <div class="skill-card-item tilt-card flashlight-card">
+                            <div class="skill-icon-wrap"><i class="fas fa-laptop-medical"></i></div>
+                            <h5 class="text-white fw-bold mb-1">Hardware Diagnostics</h5>
+                            <span class="badge bg-orange text-dark mb-2">PC & Laptop Assembly</span>
+                            <p class="text-silver small mb-0">Component testing, thermal maintenance, and OS deployments on refurbished laptops.</p>
+                            <div class="skill-progress-track">
+                                <div class="skill-level-fill" style="width: 95%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 skill-item-col" data-category="hardware">
+                        <div class="skill-card-item tilt-card flashlight-card">
+                            <div class="skill-icon-wrap"><i class="fas fa-coins"></i></div>
+                            <h5 class="text-white fw-bold mb-1">PisoNet & CCTV Integration</h5>
+                            <span class="badge bg-orange text-dark mb-2">Commercial Systems</span>
+                            <p class="text-silver small mb-0">Coin-operated gaming stations, timer boards, and DVR/NVR surveillance setup.</p>
+                            <div class="skill-progress-track">
+                                <div class="skill-level-fill" style="width: 92%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Tools & Networking -->
+                    <div class="col-md-6 col-lg-3 skill-item-col" data-category="tools">
+                        <div class="skill-card-item tilt-card flashlight-card">
+                            <div class="skill-icon-wrap"><i class="fas fa-network-wired"></i></div>
+                            <h5 class="text-white fw-bold mb-1">Networking & Cabling</h5>
+                            <span class="badge bg-orange text-dark mb-2">Infrastructure</span>
+                            <p class="text-silver small mb-0">RJ45 crimping, router/switch configuration, and structured rack management.</p>
+                            <div class="skill-progress-track">
+                                <div class="skill-level-fill" style="width: 82%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 skill-item-col" data-category="tools">
+                        <div class="skill-card-item tilt-card flashlight-card">
+                            <div class="skill-icon-wrap"><i class="fab fa-figma"></i></div>
+                            <h5 class="text-white fw-bold mb-1">Figma UI/UX Design</h5>
+                            <span class="badge bg-orange text-dark mb-2">Product Design</span>
+                            <p class="text-silver small mb-0">High-fidelity wireframes, interactive user flows, and design system components.</p>
+                            <div class="skill-progress-track">
+                                <div class="skill-level-fill" style="width: 86%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Leadership -->
+                    <div class="col-md-6 col-lg-3 skill-item-col" data-category="leadership">
+                        <div class="skill-card-item tilt-card flashlight-card">
+                            <div class="skill-icon-wrap"><i class="fas fa-heartbeat"></i></div>
+                            <h5 class="text-white fw-bold mb-1">First Aid & BLS</h5>
+                            <span class="badge bg-orange text-dark mb-2">Red Cross Youth</span>
+                            <p class="text-silver small mb-0">Emergency triage, CPR/BLS certified practices, community preparedness training.</p>
+                            <div class="skill-progress-track">
+                                <div class="skill-level-fill" style="width: 96%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 skill-item-col" data-category="leadership">
+                        <div class="skill-card-item tilt-card flashlight-card">
+                            <div class="skill-icon-wrap"><i class="fas fa-users-cog"></i></div>
+                            <h5 class="text-white fw-bold mb-1">Youth Leadership & Comm</h5>
+                            <span class="badge bg-orange text-dark mb-2">Organizational Leadership</span>
+                            <p class="text-silver small mb-0">Managing volunteer initiatives, public speaking, event coordination, and bilingual liaison.</p>
+                            <div class="skill-progress-track">
+                                <div class="skill-level-fill" style="width: 94%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photo Gallery Slider -->
+    <section id="gallery" class="py-5">
+        <div class="container reveal">
+            <div class="text-center mb-5">
+                <h2 class="text-orange fw-bold"><i class="fas fa-images me-2"></i>Random Photos</h2>
+                <p class="text-silver">Random Pics i saved on my phone, please enjoy or not <span class="text-orange fw-semibold"><i class="fas fa-search-plus ms-1"></i> Click any photo to view full screen!</span></p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="glass-card p-3 p-md-4 hover-lift border-top-orange tilt-card flashlight-card">
+                        <!-- Carousel Container -->
+                        <div id="photoGallery" class="carousel slide carousel-fade shadow-lg rounded-4 overflow-hidden" data-bs-ride="carousel" data-bs-interval="3500">
+                            
+                            <!-- Carousel Indicators -->
+                            <div class="carousel-indicators custom-indicators">
+                                <button type="button" data-bs-target="#photoGallery" data-bs-slide-to="0" class="active" aria-current="true"></button>
+                                <button type="button" data-bs-target="#photoGallery" data-bs-slide-to="1"></button>
+                                <button type="button" data-bs-target="#photoGallery" data-bs-slide-to="2"></button>
+                                <button type="button" data-bs-target="#photoGallery" data-bs-slide-to="3"></button>
+                                <button type="button" data-bs-target="#photoGallery" data-bs-slide-to="4"></button>
+                                <button type="button" data-bs-target="#photoGallery" data-bs-slide-to="5"></button>
+                                <button type="button" data-bs-target="#photoGallery" data-bs-slide-to="6"></button>
+                                <button type="button" data-bs-target="#photoGallery" data-bs-slide-to="7"></button>
+                                <button type="button" data-bs-target="#photoGallery" data-bs-slide-to="8"></button>
+                                <button type="button" data-bs-target="#photoGallery" data-bs-slide-to="9"></button>
+                                <button type="button" data-bs-target="#photoGallery" data-bs-slide-to="10"></button>
+                                <button type="button" data-bs-target="#photoGallery" data-bs-slide-to="11"></button>
+                                <button type="button" data-bs-target="#photoGallery" data-bs-slide-to="12"></button>
+                                <button type="button" data-bs-target="#photoGallery" data-bs-slide-to="13"></button>
+                                <button type="button" data-bs-target="#photoGallery" data-bs-slide-to="14"></button>
+                                <button type="button" data-bs-target="#photoGallery" data-bs-slide-to="15"></button>
+                            </div>
+
+                            <!-- Carousel Images -->
+                            <div class="carousel-inner">
+                                <div class="carousel-item active"><img src="slide1.jpg" class="d-block w-100 gallery-img" alt="Slide 1" data-slide-index="0" title="Click to open full screen"></div>
+                                <div class="carousel-item"><img src="slide2.jpg" class="d-block w-100 gallery-img" alt="Slide 2" data-slide-index="1" title="Click to open full screen"></div>
+                                <div class="carousel-item"><img src="slide3.jpg" class="d-block w-100 gallery-img" alt="Slide 3" data-slide-index="2" title="Click to open full screen"></div>
+                                <div class="carousel-item"><img src="slide4.jpg" class="d-block w-100 gallery-img" alt="Slide 4" data-slide-index="3" title="Click to open full screen"></div>
+                                <div class="carousel-item"><img src="slide5.jpg" class="d-block w-100 gallery-img" alt="Slide 5" data-slide-index="4" title="Click to open full screen"></div>
+                                <div class="carousel-item"><img src="slide6.jpg" class="d-block w-100 gallery-img" alt="Slide 6" data-slide-index="5" title="Click to open full screen"></div>
+                                <div class="carousel-item"><img src="slide7.jpg" class="d-block w-100 gallery-img" alt="Slide 7" data-slide-index="6" title="Click to open full screen"></div>
+                                <div class="carousel-item"><img src="slide8.jpg" class="d-block w-100 gallery-img" alt="Slide 8" data-slide-index="7" title="Click to open full screen"></div>
+                                <div class="carousel-item"><img src="slide9.jpg" class="d-block w-100 gallery-img" alt="Slide 9" data-slide-index="8" title="Click to open full screen"></div>
+                                <div class="carousel-item"><img src="slide10.jpg" class="d-block w-100 gallery-img" alt="Slide 10" data-slide-index="9" title="Click to open full screen"></div>
+                                <div class="carousel-item"><img src="slide11.jpg" class="d-block w-100 gallery-img" alt="Slide 11" data-slide-index="10" title="Click to open full screen"></div>
+                                <div class="carousel-item"><img src="slide12.jpg" class="d-block w-100 gallery-img" alt="Slide 12" data-slide-index="11" title="Click to open full screen"></div>
+                                <div class="carousel-item"><img src="slide13.jpg" class="d-block w-100 gallery-img" alt="Slide 13" data-slide-index="12" title="Click to open full screen"></div>
+                                <div class="carousel-item"><img src="slide14.jpg" class="d-block w-100 gallery-img" alt="Slide 14" data-slide-index="13" title="Click to open full screen"></div>
+                                <div class="carousel-item"><img src="slide15.jpg" class="d-block w-100 gallery-img" alt="Slide 15" data-slide-index="14" title="Click to open full screen"></div>
+                                <div class="carousel-item"><img src="slide16.jpg" class="d-block w-100 gallery-img" alt="Slide 16" data-slide-index="15" title="Click to open full screen"></div>
+                            </div>
+
+                            <!-- Carousel Controls -->
+                            <button class="carousel-control-prev custom-carousel-btn prev-gradient" type="button" data-bs-target="#photoGallery" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon glow-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next custom-carousel-btn next-gradient" type="button" data-bs-target="#photoGallery" data-bs-slide="next">
+                                <span class="carousel-control-next-icon glow-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Favorite Music Section -->
+    <section id="music" class="py-5">
+        <div class="container reveal">
+            <div class="text-center mb-4">
+                <h2 class="text-orange fw-bold"><i class="fas fa-compact-disc me-2"></i>My Fav Music (so far)</h2>
+                <p class="text-silver">Hit play on the vinyl player to spin the record and unleash the atmospheric vibe.(Basta umuulan na random shi)</p>
+            </div>
+
+            <!-- Era Tabs Selector -->
+            <div class="d-flex flex-wrap justify-content-center gap-2 mb-4">
+                <button type="button" class="era-tab-btn" data-era="classic"><i class="fas fa-fire me-1"></i> Classic Orange</button>
+                <button type="button" class="era-tab-btn active" data-era="revenge"><i class="fas fa-tint me-1"></i> Three Cheers (Revenge)</button>
+                <button type="button" class="era-tab-btn" data-era="black-parade"><i class="fas fa-skull me-1"></i> The Black Parade</button>
+                <button type="button" class="era-tab-btn" data-era="danger-days"><i class="fas fa-bolt me-1"></i> Danger Days</button>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-9">
+                    <div class="mcr-player-card p-4 p-md-5 hover-lift">
+                        <div class="row align-items-center g-4">
+                            <!-- Left Column: Vinyl Record & Album Cover -->
+                            <div class="col-md-5 text-center">
+                                <div id="vinylStage" class="vinyl-stage">
+                                    <div class="vinyl-cover">
+                                        <img src="album.webp" alt="Three Cheers for Sweet Revenge">
+                                    </div>
+                                    <div class="vinyl-disc">
+                                        <div class="vinyl-center-label"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Right Column: Track Details, Quotes, and Controls -->
+                            <div class="col-md-7">
+                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                    <span class="badge bg-orange text-dark px-3 py-1 fw-bold text-uppercase" id="eraBadge">Revenge Era</span>
+                                    <!-- Equalizer Visualizer -->
+                                    <div id="equalizer" class="equalizer-container" title="Audio Visualizer">
+                                        <div class="eq-bar"></div>
+                                        <div class="eq-bar"></div>
+                                        <div class="eq-bar"></div>
+                                        <div class="eq-bar"></div>
+                                        <div class="eq-bar"></div>
+                                        <div class="eq-bar"></div>
+                                        <div class="eq-bar"></div>
+                                        <div class="eq-bar"></div>
+                                    </div>
+                                </div>
+
+                                <h3 class="text-white fw-bold mb-1" id="trackTitle">Thank You for the Venom</h3>
+                                <h5 class="text-orange mb-3" id="trackArtist">My Chemical Romance</h5>
+                                
+                                <!-- Dynamic Lyric Quote Ticker -->
+                                <div class="mcr-quote-ticker mb-3">
+                                    <i class="fas fa-quote-left text-orange me-2 fs-6"></i>
+                                    <span id="mcrQuoteText" class="fst-italic text-silver small">"Give me a reason to believe..."</span>
+                                </div>
+                                
+                                <!-- Progress Bar & Timers -->
+                                <div class="mcr-progress-container mb-3">
+                                    <span id="currentTime" class="mcr-time">0:00</span>
+                                    <div id="mcrProgressBar" class="mcr-progress-bar" title="Click to seek">
+                                        <div id="mcrProgressFill" class="mcr-progress-fill"></div>
+                                    </div>
+                                    <span id="durationTime" class="mcr-time">3:41</span>
+                                </div>
+
+                                <!-- Controls & Volume -->
+                                <div class="mcr-controls">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <button type="button" id="playBtn" class="play-main-btn" title="Play / Pause">
+                                            <i class="fas fa-play" id="playBtnIcon"></i>
+                                        </button>
+                                        <div class="volume-control-wrap">
+                                            <i class="fas fa-volume-up" id="volumeIcon" title="Mute / Unmute"></i>
+                                            <input type="range" id="volumeSlider" class="volume-slider" min="0" max="1" step="0.05" value="0.8" title="Volume">
+                                        </div>
+                                    </div>
+                                    <button type="button" id="stormToggleBtn" class="storm-toggle-btn active" title="Toggle Atmospheric Particle Storm">
+                                        <i class="fas fa-magic me-1"></i> FX Storm: <span id="stormStatus">ON</span>
+                                    </button>
+                                </div>
+
+                                <!-- Hidden Native Audio Source -->
+                                <audio id="favMusic" preload="metadata">
+                                    <source src="Thank You for the Venom.mp3" type="audio/mpeg">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section id="contact" class="py-5 mb-5 reveal">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 glass-card p-4 p-md-5">
+                    <h2 class="text-center text-orange fw-bold mb-4">Let's Connect</h2>
+                    <form id="contactForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label text-white fw-bold">Your Name</label>
+                                <input type="text" class="form-control custom-input" placeholder="e.g. John Doe" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label text-white fw-bold">Your Email</label>
+                                <input type="email" class="form-control custom-input" placeholder="e.g. john@email.com" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-white fw-bold mb-2">Quick Inquiry Topics</label>
+                            <div class="inquiry-chips-wrap">
+                                <button type="button" class="inquiry-chip" data-text="Hi Kerby! I'm reaching out regarding an internship / OJT opportunity in Information Systems."><i class="fas fa-briefcase me-1"></i> OJT / Internship</button>
+                                <button type="button" class="inquiry-chip" data-text="Hello Kerby, I need hardware diagnostics and system maintenance support for our computers."><i class="fas fa-tools me-1"></i> Tech Diagnostics</button>
+                                <button type="button" class="inquiry-chip" data-text="Hi Kerby! I would like to consult with you about UI/UX prototyping and system analysis."><i class="fas fa-laptop-code me-1"></i> UI/UX & IS Project</button>
+                                <button type="button" class="inquiry-chip" data-text="Greetings Kerby! Reaching out for community advocacy / Red Cross youth collaboration."><i class="fas fa-hands-helping me-1"></i> RCY & Community</button>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label text-white fw-bold">Message</label>
+                            <textarea id="contactMessage" class="form-control custom-input" rows="4" maxlength="500" placeholder="How can I help you?" required></textarea>
+                            <div class="char-counter"><span id="charCount">0</span> / 500 characters</div>
+                        </div>
+                        <button type="submit" class="btn btn-custom-orange w-100 py-3 fw-bold fs-5">
+                            Send Message <i class="fas fa-paper-plane ms-2"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center py-4 glass-nav">
+        <p class="text-silver mb-0">&copy; <span id="currentYear"></span> Created with HTML, CSS & JS by <strong class="text-orange">Kerby Enova</strong></p>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button onclick="scrollToTop()" id="backToTopBtn" title="Go to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Bootstrap Video Modal -->
+    <div class="modal fade" id="videoModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content bg-dark border-orange">
+                <div class="modal-header border-0 pb-0">
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <video id="introVideo" width="100%" controls class="rounded">
+                        <source src="introVid.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Toast Notification -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-4 z-3">
+        <div id="successToast" class="toast align-items-center text-bg-dark border-orange shadow-lg" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body fw-bold text-white fs-6 py-3">
+                    <i class="fas fa-check-circle text-orange me-2 fs-5"></i> Message sent successfully!
+                </div>
+                <button type="button" class="btn-close btn-close-white me-3 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Developer Terminal Launcher Button -->
+    <button id="terminalLauncherBtn" class="terminal-launcher-btn" title="Open Enova Terminal (CLI)">
+        <i class="fas fa-terminal"></i>
+        <span class="terminal-btn-tooltip">Interactive CLI</span>
+    </button>
+
+    <!-- Interactive Terminal Drawer -->
+    <div id="terminalDrawer" class="terminal-drawer d-none">
+        <div class="terminal-window">
+            <div class="terminal-header">
+                <div class="terminal-dots">
+                    <span class="dot red" id="termCloseBtn" title="Close"></span>
+                    <span class="dot yellow" id="termMinBtn" title="Minimize"></span>
+                    <span class="dot green" id="termMaxBtn" title="Maximize"></span>
+                </div>
+                <div class="terminal-title"><i class="fas fa-terminal text-orange me-1"></i> kerby@enova-os: ~ (cli)</div>
+                <div class="terminal-actions">
+                    <button type="button" class="btn btn-sm btn-outline-secondary py-0 px-2 text-silver" id="termClearShortcut">clear</button>
+                </div>
+            </div>
+            <div class="terminal-body" id="terminalBody">
+                <div class="terminal-welcome mb-3">
+                    <div class="text-orange fw-bold">ENOVA INFORMATION SYSTEMS [Version 2.4.0]</div>
+                    <div class="text-silver small">Type <span class="text-orange fw-bold">'help'</span> for commands, or try <span class="text-orange fw-bold">'skills'</span>, <span class="text-orange fw-bold">'projects'</span>, <span class="text-orange fw-bold">'theme'</span>, <span class="text-orange fw-bold">'matrix'</span>.</div>
+                </div>
+                <div id="terminalHistory"></div>
+                <div class="terminal-input-row">
+                    <span class="prompt-user">kerby@enova-os:~$</span>
+                    <input type="text" id="terminalInput" autocomplete="off" spellcheck="false" placeholder="type a command...">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fullscreen Photo Gallery Lightbox -->
+    <div id="galleryLightbox" class="gallery-lightbox d-none">
+        <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
+        <div class="lightbox-content">
+            <button class="lightbox-close-btn" id="lightboxCloseBtn" title="Close (Esc)"><i class="fas fa-times"></i></button>
+            <div class="lightbox-header">
+                <span class="lightbox-counter" id="lightboxCounter">Photo 1 of 16</span>
+                <span class="lightbox-caption text-silver" id="lightboxCaption">Gallery Photo</span>
+            </div>
+            <div class="lightbox-img-wrapper">
+                <img id="lightboxImg" src="slide1.jpg" alt="Gallery Photo">
+                <button class="lightbox-nav-btn prev" id="lightboxPrevBtn" title="Previous (Left Arrow)"><i class="fas fa-chevron-left"></i></button>
+                <button class="lightbox-nav-btn next" id="lightboxNextBtn" title="Next (Right Arrow)"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="lightbox-footer text-silver small text-center mt-3">
+                <kbd class="bg-dark text-orange border border-secondary px-2 py-1">←</kbd> <kbd class="bg-dark text-orange border border-secondary px-2 py-1">→</kbd> navigate photos • <kbd class="bg-dark text-orange border border-secondary px-2 py-1">Esc</kbd> to exit
+            </div>
+        </div>
+    </div>
+
+    <!-- Command Palette Modal (Spotlight Search) -->
+    <div class="modal fade" id="commandPaletteModal" tabindex="-1" aria-labelledby="cmdPaletteInput" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered cmd-modal-dialog">
+            <div class="modal-content cmd-modal-content text-white">
+                <div class="cmd-search-wrap">
+                    <i class="fas fa-search text-orange fs-5"></i>
+                    <input type="text" id="cmdPaletteInput" class="cmd-search-input" placeholder="Type a command or search portfolio (e.g. 'experience', 'theme', 'resume')..." autocomplete="off">
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="cmd-results-list" id="cmdResultsList">
+                    <!-- Dynamic command items populated via JS -->
+                </div>
+                <div class="cmd-footer">
+                    <div><kbd class="cmd-kbd">↑</kbd> <kbd class="cmd-kbd">↓</kbd> to navigate • <kbd class="cmd-kbd">Enter</kbd> to select</div>
+                    <div><kbd class="cmd-kbd">Esc</kbd> to close</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactive Resume Preview Modal -->
+    <div class="modal fade" id="resumeModal" tabindex="-1" aria-labelledby="resumeModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg resume-modal-dialog">
+            <div class="modal-content bg-dark border-orange glass-card text-white">
+                <div class="modal-header border-secondary">
+                    <div class="d-flex align-items-center gap-2">
+                        <i class="fas fa-file-alt text-orange fs-4"></i>
+                        <div>
+                            <h5 class="modal-title fw-bold text-white mb-0" id="resumeModalTitle">Kerby Z. Enova — Curriculum Vitae</h5>
+                            <small class="text-silver">BS Information Systems • Technical Specialist • Youth Leader</small>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4" id="resumePrintArea">
+                    <div class="resume-header-card d-flex flex-wrap align-items-center justify-content-between gap-3">
+                        <div>
+                            <h4 class="text-white fw-bold mb-1">Kerby Zamudio Enova</h4>
+                            <div class="text-orange fw-semibold mb-2">Camarines Norte State College — BS Information Systems</div>
+                            <div class="text-silver small">
+                                <span><i class="fas fa-map-marker-alt text-orange me-1"></i> Paracale, Camarines Norte</span> • 
+                                <span><i class="fas fa-envelope text-orange me-1"></i> kerbyenova89@gmail.com</span> • 
+                                <span><i class="fas fa-phone text-orange me-1"></i> 095571596198</span>
+                            </div>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <button type="button" class="btn btn-sm btn-custom-orange" id="printResumeBtn">
+                                <i class="fas fa-print me-1"></i> Print / PDF
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="row g-4">
+                        <!-- Left Column: Education & Experience -->
+                        <div class="col-md-7">
+                            <div class="resume-section-title">
+                                <i class="fas fa-briefcase"></i> Experience & Field Work
+                            </div>
+                            <div class="resume-timeline-item">
+                                <strong class="text-white">Technical Support & Immersion Specialist</strong><br>
+                                <span class="text-orange small">KARTEL-Daet (2024)</span>
+                                <p class="text-silver small mb-0 mt-1">Refurbished laptop overhaul, diagnostic teardown, CCTV installation, and commercial PisoNet timer/timer-board setup.</p>
+                            </div>
+                            <div class="resume-timeline-item">
+                                <strong class="text-white">Chapter President & Youth Adviser</strong><br>
+                                <span class="text-orange small">Philippine Red Cross Youth — Paracale (2023 - 2025)</span>
+                                <p class="text-silver small mb-0 mt-1">Directed 40+ volunteers for disaster risk reduction workshops, first aid facilitation, and community drives.</p>
+                            </div>
+                            <div class="resume-timeline-item">
+                                <strong class="text-white">Systems Analyst & Lead UI Designer</strong><br>
+                                <span class="text-orange small">Pabirik Laundry House IS Project</span>
+                                <p class="text-silver small mb-0 mt-1">Designed high-fidelity POS workflows in Figma, mapped ERD databases, and automated order tracking.</p>
+                            </div>
+
+                            <div class="resume-section-title mt-4">
+                                <i class="fas fa-graduation-cap"></i> Education
+                            </div>
+                            <div class="resume-timeline-item">
+                                <strong class="text-white">Bachelor of Science in Information Systems</strong><br>
+                                <span class="text-silver small">Camarines Norte State College, Daet (2024 - Present)</span>
+                            </div>
+                            <div class="resume-timeline-item">
+                                <strong class="text-white">TVL - Information & Communications Technology</strong><br>
+                                <span class="text-silver small">Paracale National High School (2022 - 2024)</span>
+                            </div>
+                        </div>
+
+                        <!-- Right Column: Skills & Certifications -->
+                        <div class="col-md-5">
+                            <div class="resume-section-title">
+                                <i class="fas fa-cogs"></i> Technical Competencies
+                            </div>
+                            <div class="mb-3">
+                                <span class="tech-tag-badge">Java (OOP)</span>
+                                <span class="tech-tag-badge">HTML5 / CSS3 / JS</span>
+                                <span class="tech-tag-badge">Bootstrap 5</span>
+                                <span class="tech-tag-badge">Hardware Diagnostics</span>
+                                <span class="tech-tag-badge">Laptop Refurbishment</span>
+                                <span class="tech-tag-badge">PisoNet Assembly</span>
+                                <span class="tech-tag-badge">CCTV / DVR Setup</span>
+                                <span class="tech-tag-badge">Figma UI/UX</span>
+                                <span class="tech-tag-badge">RJ45 Crimping / LAN</span>
+                            </div>
+
+                            <div class="resume-section-title mt-4">
+                                <i class="fas fa-certificate"></i> Certifications & Honors
+                            </div>
+                            <ul class="list-unstyled text-silver small">
+                                <li class="mb-2"><i class="fas fa-check-circle text-orange me-2"></i><strong>Basic Life Support (BLS) & CPR</strong> — Red Cross Youth</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-orange me-2"></i><strong>TVL-ICT Track Graduate</strong> — Computer Systems Servicing</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-orange me-2"></i><strong>Community Leadership Excellence</strong> — LGU Paracale</li>
+                            </ul>
+
+                            <div class="resume-section-title mt-4">
+                                <i class="fas fa-language"></i> Languages
+                            </div>
+                            <p class="text-silver small mb-0">
+                                <strong>Filipino:</strong> Native Proficiency<br>
+                                <strong>English:</strong> Professional Conversational
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-secondary">
+                    <button type="button" class="btn btn-outline-custom px-4" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project Case Study Modal -->
+    <div class="modal fade" id="caseStudyModal" tabindex="-1" aria-labelledby="caseStudyTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered case-study-modal-dialog">
+            <div class="modal-content bg-dark border-orange glass-card text-white">
+                <div class="modal-header border-secondary">
+                    <h4 class="modal-title fw-bold text-orange" id="caseStudyTitle"><i class="fas fa-project-diagram me-2"></i>Project Specs</h4>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4" id="caseStudyBody">
+                    <!-- Injected dynamically via JavaScript -->
+                </div>
+                <div class="modal-footer border-secondary">
+                    <button type="button" class="btn btn-outline-custom px-4" data-bs-dismiss="modal">Close Blueprint</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="prankOverlay" class="prank-overlay d-none">
+        <div class="prank-content text-center p-4 p-md-5 glass-card border-danger">
+            <h1 class="text-danger fw-bold mb-4 blink-text">⚠️ SYSTEM COMPROMISED</h1>
+            <img src="lol.gif" alt="You got pranked!" class="img-fluid mb-4 rounded shadow-lg" style="max-width: 350px;">
+            <br>
+            <button id="killPcBtn" class="btn btn-danger btn-lg fw-bold px-5 py-3 pulse-btn">
+                <i class="fas fa-skull me-2"></i> KILL PC
+            </button>
+        </div>
+        
+        <audio id="prankAudio" loop>
+            <source src="lol.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <!-- Dynamic Sleek Floating Toast Notification Container -->
+    <div id="enovaToastContainer" class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 10050;"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script src="script.js"></script>
+
+</body>
+</html>
