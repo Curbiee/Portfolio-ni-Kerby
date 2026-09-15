@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="70">
 
@@ -102,12 +102,12 @@
                 </div>
 
                 <!-- SFX Sound Effects Toggle -->
-                <button type="button" id="sfxToggleBtn" class="fb-circle-btn" title="Toggle Tactile Sound Effects (SFX)">
+                <button type="button" id="sfxToggleBtn" class="fb-circle-btn" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Toggle Tactile Sound Effects (SFX)">
                     <i class="fas fa-volume-up" id="sfxIcon"></i>
                 </button>
 
                 <!-- Interactive Terminal Launcher -->
-                <button type="button" id="navTerminalBtn" class="fb-circle-btn d-none d-sm-inline-flex" title="Open Interactive Terminal (CLI)">
+                <button type="button" id="navTerminalBtn" class="fb-circle-btn d-none d-sm-inline-flex" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Open Interactive Terminal (CLI)">
                     <i class="fas fa-terminal"></i>
                 </button>
 
@@ -157,12 +157,16 @@
     <!-- Hero / Profile Section -->
     <section id="home" class="min-vh-100 d-flex align-items-center text-center pt-5 reveal">
         <div class="container">
-            <img src="profile.jpg" alt="Kerby Enova" class="profile-img mb-3 shadow-lg">
+            <img src="images/profile.jpg" alt="Kerby Enova" class="profile-img mb-3 shadow-lg">
             
-            <!-- Live Availability Beacon -->
-            <div>
-                <div class="work-status-badge">
-                    <span class="status-beacon"></span> Available for OJT & IS Projects
+            <!-- Live Availability Beacon & Dynamic Clock Widget -->
+            <div class="d-flex flex-wrap align-items-center justify-content-center gap-2 mb-3">
+                <div class="work-status-badge mb-0">
+                    <span class="status-beacon"></span> Available for OJT &amp; IS Projects
+                </div>
+                <div class="live-clock-pill">
+                    <i class="fas fa-clock text-orange me-1"></i>
+                    <span id="liveGreeting">Good day</span>, it's <span id="digitalClock" class="fw-bold text-white font-monospace">--:--:--</span>
                 </div>
             </div>
 
@@ -221,7 +225,7 @@
                 <button class="btn btn-outline-custom px-4 py-2" data-bs-toggle="modal" data-bs-target="#resumeModal">
                     <i class="fas fa-file-pdf me-2"></i> View Resume
                 </button>
-                <button class="btn btn-outline-custom px-3 py-2" id="shareProfileBtn" title="Share Portfolio Link">
+                <button class="btn btn-outline-custom px-3 py-2" id="shareProfileBtn" data-bs-toggle="tooltip" data-bs-placement="top" title="Share Portfolio Link">
                     <i class="fas fa-share-alt me-1"></i> Share
                 </button>
                 <a href="#about" class="btn btn-outline-custom px-4 py-2">Learn More</a>
@@ -487,8 +491,8 @@
                             <h5 class="text-white fw-bold mb-1">Java Programming</h5>
                             <span class="badge bg-orange text-dark mb-2">Core Language</span>
                             <p class="text-silver small mb-0">Object-oriented programming, data structures, and algorithm design.</p>
-                            <div class="skill-progress-track">
-                                <div class="skill-level-fill" style="width: 78%;"></div>
+                            <div class="progress skill-progress-track" role="progressbar" aria-label="Java Skill" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar skill-level-fill" style="width: 78%;"></div>
                             </div>
                         </div>
                     </div>
@@ -498,8 +502,8 @@
                             <h5 class="text-white fw-bold mb-1">Frontend (HTML/CSS/JS)</h5>
                             <span class="badge bg-orange text-dark mb-2">Web Development</span>
                             <p class="text-silver small mb-0">Bootstrap 5, modern CSS custom properties, DOM manipulation, responsive UI.</p>
-                            <div class="skill-progress-track">
-                                <div class="skill-level-fill" style="width: 88%;"></div>
+                            <div class="progress skill-progress-track" role="progressbar" aria-label="Frontend Skill" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar skill-level-fill" style="width: 88%;"></div>
                             </div>
                         </div>
                     </div>
@@ -510,8 +514,8 @@
                             <h5 class="text-white fw-bold mb-1">Hardware Diagnostics</h5>
                             <span class="badge bg-orange text-dark mb-2">PC & Laptop Assembly</span>
                             <p class="text-silver small mb-0">Component testing, thermal maintenance, and OS deployments on refurbished laptops.</p>
-                            <div class="skill-progress-track">
-                                <div class="skill-level-fill" style="width: 95%;"></div>
+                            <div class="progress skill-progress-track" role="progressbar" aria-label="Hardware Skill" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar skill-level-fill" style="width: 95%;"></div>
                             </div>
                         </div>
                     </div>
@@ -521,8 +525,8 @@
                             <h5 class="text-white fw-bold mb-1">PisoNet & CCTV Integration</h5>
                             <span class="badge bg-orange text-dark mb-2">Commercial Systems</span>
                             <p class="text-silver small mb-0">Coin-operated gaming stations, timer boards, and DVR/NVR surveillance setup.</p>
-                            <div class="skill-progress-track">
-                                <div class="skill-level-fill" style="width: 92%;"></div>
+                            <div class="progress skill-progress-track" role="progressbar" aria-label="PisoNet Skill" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar skill-level-fill" style="width: 92%;"></div>
                             </div>
                         </div>
                     </div>
@@ -533,8 +537,8 @@
                             <h5 class="text-white fw-bold mb-1">Networking & Cabling</h5>
                             <span class="badge bg-orange text-dark mb-2">Infrastructure</span>
                             <p class="text-silver small mb-0">RJ45 crimping, router/switch configuration, and structured rack management.</p>
-                            <div class="skill-progress-track">
-                                <div class="skill-level-fill" style="width: 82%;"></div>
+                            <div class="progress skill-progress-track" role="progressbar" aria-label="Networking Skill" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar skill-level-fill" style="width: 82%;"></div>
                             </div>
                         </div>
                     </div>
@@ -544,8 +548,8 @@
                             <h5 class="text-white fw-bold mb-1">Figma UI/UX Design</h5>
                             <span class="badge bg-orange text-dark mb-2">Product Design</span>
                             <p class="text-silver small mb-0">High-fidelity wireframes, interactive user flows, and design system components.</p>
-                            <div class="skill-progress-track">
-                                <div class="skill-level-fill" style="width: 86%;"></div>
+                            <div class="progress skill-progress-track" role="progressbar" aria-label="Figma Skill" aria-valuenow="86" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar skill-level-fill" style="width: 86%;"></div>
                             </div>
                         </div>
                     </div>
@@ -556,8 +560,8 @@
                             <h5 class="text-white fw-bold mb-1">First Aid & BLS</h5>
                             <span class="badge bg-orange text-dark mb-2">Red Cross Youth</span>
                             <p class="text-silver small mb-0">Emergency triage, CPR/BLS certified practices, community preparedness training.</p>
-                            <div class="skill-progress-track">
-                                <div class="skill-level-fill" style="width: 96%;"></div>
+                            <div class="progress skill-progress-track" role="progressbar" aria-label="First Aid Skill" aria-valuenow="96" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar skill-level-fill" style="width: 96%;"></div>
                             </div>
                         </div>
                     </div>
@@ -567,8 +571,8 @@
                             <h5 class="text-white fw-bold mb-1">Youth Leadership & Comm</h5>
                             <span class="badge bg-orange text-dark mb-2">Organizational Leadership</span>
                             <p class="text-silver small mb-0">Managing volunteer initiatives, public speaking, event coordination, and bilingual liaison.</p>
-                            <div class="skill-progress-track">
-                                <div class="skill-level-fill" style="width: 94%;"></div>
+                            <div class="progress skill-progress-track" role="progressbar" aria-label="Leadership Skill" aria-valuenow="94" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar skill-level-fill" style="width: 94%;"></div>
                             </div>
                         </div>
                     </div>
@@ -612,22 +616,22 @@
 
                             <!-- Carousel Images -->
                             <div class="carousel-inner">
-                                <div class="carousel-item active"><img src="slide1.jpg" class="d-block w-100 gallery-img" alt="Slide 1" data-slide-index="0" title="Click to open full screen"></div>
-                                <div class="carousel-item"><img src="slide2.jpg" class="d-block w-100 gallery-img" alt="Slide 2" data-slide-index="1" title="Click to open full screen"></div>
-                                <div class="carousel-item"><img src="slide3.jpg" class="d-block w-100 gallery-img" alt="Slide 3" data-slide-index="2" title="Click to open full screen"></div>
-                                <div class="carousel-item"><img src="slide4.jpg" class="d-block w-100 gallery-img" alt="Slide 4" data-slide-index="3" title="Click to open full screen"></div>
-                                <div class="carousel-item"><img src="slide5.jpg" class="d-block w-100 gallery-img" alt="Slide 5" data-slide-index="4" title="Click to open full screen"></div>
-                                <div class="carousel-item"><img src="slide6.jpg" class="d-block w-100 gallery-img" alt="Slide 6" data-slide-index="5" title="Click to open full screen"></div>
-                                <div class="carousel-item"><img src="slide7.jpg" class="d-block w-100 gallery-img" alt="Slide 7" data-slide-index="6" title="Click to open full screen"></div>
-                                <div class="carousel-item"><img src="slide8.jpg" class="d-block w-100 gallery-img" alt="Slide 8" data-slide-index="7" title="Click to open full screen"></div>
-                                <div class="carousel-item"><img src="slide9.jpg" class="d-block w-100 gallery-img" alt="Slide 9" data-slide-index="8" title="Click to open full screen"></div>
-                                <div class="carousel-item"><img src="slide10.jpg" class="d-block w-100 gallery-img" alt="Slide 10" data-slide-index="9" title="Click to open full screen"></div>
-                                <div class="carousel-item"><img src="slide11.jpg" class="d-block w-100 gallery-img" alt="Slide 11" data-slide-index="10" title="Click to open full screen"></div>
-                                <div class="carousel-item"><img src="slide12.jpg" class="d-block w-100 gallery-img" alt="Slide 12" data-slide-index="11" title="Click to open full screen"></div>
-                                <div class="carousel-item"><img src="slide13.jpg" class="d-block w-100 gallery-img" alt="Slide 13" data-slide-index="12" title="Click to open full screen"></div>
-                                <div class="carousel-item"><img src="slide14.jpg" class="d-block w-100 gallery-img" alt="Slide 14" data-slide-index="13" title="Click to open full screen"></div>
-                                <div class="carousel-item"><img src="slide15.jpg" class="d-block w-100 gallery-img" alt="Slide 15" data-slide-index="14" title="Click to open full screen"></div>
-                                <div class="carousel-item"><img src="slide16.jpg" class="d-block w-100 gallery-img" alt="Slide 16" data-slide-index="15" title="Click to open full screen"></div>
+                                <div class="carousel-item active"><img src="images/slide1.jpg" class="d-block w-100 gallery-img" alt="Slide 1" data-slide-index="0" title="Click to open full screen"></div>
+                                <div class="carousel-item"><img src="images/slide2.jpg" class="d-block w-100 gallery-img" alt="Slide 2" data-slide-index="1" title="Click to open full screen"></div>
+                                <div class="carousel-item"><img src="images/slide3.jpg" class="d-block w-100 gallery-img" alt="Slide 3" data-slide-index="2" title="Click to open full screen"></div>
+                                <div class="carousel-item"><img src="images/slide4.jpg" class="d-block w-100 gallery-img" alt="Slide 4" data-slide-index="3" title="Click to open full screen"></div>
+                                <div class="carousel-item"><img src="images/slide5.jpg" class="d-block w-100 gallery-img" alt="Slide 5" data-slide-index="4" title="Click to open full screen"></div>
+                                <div class="carousel-item"><img src="images/slide6.jpg" class="d-block w-100 gallery-img" alt="Slide 6" data-slide-index="5" title="Click to open full screen"></div>
+                                <div class="carousel-item"><img src="images/slide7.jpg" class="d-block w-100 gallery-img" alt="Slide 7" data-slide-index="6" title="Click to open full screen"></div>
+                                <div class="carousel-item"><img src="images/slide8.jpg" class="d-block w-100 gallery-img" alt="Slide 8" data-slide-index="7" title="Click to open full screen"></div>
+                                <div class="carousel-item"><img src="images/slide9.jpg" class="d-block w-100 gallery-img" alt="Slide 9" data-slide-index="8" title="Click to open full screen"></div>
+                                <div class="carousel-item"><img src="images/slide10.jpg" class="d-block w-100 gallery-img" alt="Slide 10" data-slide-index="9" title="Click to open full screen"></div>
+                                <div class="carousel-item"><img src="images/slide11.jpg" class="d-block w-100 gallery-img" alt="Slide 11" data-slide-index="10" title="Click to open full screen"></div>
+                                <div class="carousel-item"><img src="images/slide12.jpg" class="d-block w-100 gallery-img" alt="Slide 12" data-slide-index="11" title="Click to open full screen"></div>
+                                <div class="carousel-item"><img src="images/slide13.jpg" class="d-block w-100 gallery-img" alt="Slide 13" data-slide-index="12" title="Click to open full screen"></div>
+                                <div class="carousel-item"><img src="images/slide14.jpg" class="d-block w-100 gallery-img" alt="Slide 14" data-slide-index="13" title="Click to open full screen"></div>
+                                <div class="carousel-item"><img src="images/slide15.jpg" class="d-block w-100 gallery-img" alt="Slide 15" data-slide-index="14" title="Click to open full screen"></div>
+                                <div class="carousel-item"><img src="images/slide16.jpg" class="d-block w-100 gallery-img" alt="Slide 16" data-slide-index="15" title="Click to open full screen"></div>
                             </div>
 
                             <!-- Carousel Controls -->
@@ -670,7 +674,7 @@
                             <div class="col-md-5 text-center">
                                 <div id="vinylStage" class="vinyl-stage">
                                     <div class="vinyl-cover">
-                                        <img src="album.webp" alt="Three Cheers for Sweet Revenge">
+                                        <img src="images/album.webp" alt="Three Cheers for Sweet Revenge">
                                     </div>
                                     <div class="vinyl-disc">
                                         <div class="vinyl-center-label"></div>
@@ -742,21 +746,93 @@
         </div>
     </section>
 
+    <!-- Frequently Asked Questions (Bootstrap Accordion) -->
+    <section id="faq" class="py-5">
+        <div class="container reveal">
+            <div class="text-center mb-5">
+                <h2 class="text-orange fw-bold"><i class="fas fa-question-circle me-2"></i>Frequently Asked Questions</h2>
+                <p class="text-silver">Answers regarding my internship availability, hardware capabilities, and leadership background.</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-9">
+                    <div class="accordion custom-accordion" id="portfolioFaqAccordion">
+                        <!-- FAQ 1 -->
+                        <div class="accordion-item mb-3">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    <i class="fas fa-briefcase text-orange me-2"></i> What are your availability details for an OJT / Internship position?
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#portfolioFaqAccordion">
+                                <div class="accordion-body text-silver">
+                                    I am actively seeking an OJT / Technical Internship placement starting this academic term. I can accommodate on-site positions across Daet and Camarines Norte, as well as remote/hybrid roles focused on Information Systems analysis, hardware diagnostics, and frontend development.
+                                </div>
+                            </div>
+                        </div>
+                        <!-- FAQ 2 -->
+                        <div class="accordion-item mb-3">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    <i class="fas fa-microchip text-orange me-2"></i> What computer hardware diagnostics and servicing can you handle?
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#portfolioFaqAccordion">
+                                <div class="accordion-body text-silver">
+                                    During my immersion at KARTEL-Daet, I specialized in hands-on laptop teardowns (motherboard inspection, thermal paste re-application, CMOS battery checks), desktop component troubleshooting, PisoNet station assembly (anti-cheat coin relays &amp; digital timers), and Cat5e/Cat6 cable crimping and structured network routing.
+                                </div>
+                            </div>
+                        </div>
+                        <!-- FAQ 3 -->
+                        <div class="accordion-item mb-3">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    <i class="fas fa-sitemap text-orange me-2"></i> How do you approach Information Systems and UI/UX projects?
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#portfolioFaqAccordion">
+                                <div class="accordion-body text-silver">
+                                    I bridge technical problem-solving with intuitive user experience. For projects like the Pabirik Laundry House management system, I lead system analysis, design Data Flow Diagrams (DFD) and Entity-Relationship Diagrams (ERD), and build interactive high-fidelity clickable wireframes in Figma before writing production frontend code.
+                                </div>
+                            </div>
+                        </div>
+                        <!-- FAQ 4 -->
+                        <div class="accordion-item mb-3">
+                            <h2 class="accordion-header" id="headingFour">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                    <i class="fas fa-hands-helping text-orange me-2"></i> What is your leadership experience with the Red Cross Youth (RCY)?
+                                </button>
+                            </h2>
+                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#portfolioFaqAccordion">
+                                <div class="accordion-body text-silver">
+                                    I have served as President and Youth Council Adviser for Red Cross Youth Paracale Chapter from 2023 to 2025. My leadership responsibilities include mobilizing 40+ youth volunteers, organizing community disaster risk reduction drills, and facilitating first aid and Basic Life Support (BLS/CPR) demonstrations.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Form -->
     <section id="contact" class="py-5 mb-5 reveal">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 glass-card p-4 p-md-5">
                     <h2 class="text-center text-orange fw-bold mb-4">Let's Connect</h2>
-                    <form id="contactForm">
+                    <form id="contactForm" class="needs-validation" novalidate>
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label class="form-label text-white fw-bold">Your Name</label>
-                                <input type="text" class="form-control custom-input" placeholder="e.g. John Doe" required>
+                                <label class="form-label text-white fw-bold" for="contactName">Your Name</label>
+                                <input type="text" id="contactName" class="form-control custom-input" placeholder="e.g. John Doe" required minlength="2">
+                                <div class="invalid-feedback">Please enter your name (at least 2 characters).</div>
+                                <div class="valid-feedback">Looks great!</div>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label class="form-label text-white fw-bold">Your Email</label>
-                                <input type="email" class="form-control custom-input" placeholder="e.g. john@email.com" required>
+                                <label class="form-label text-white fw-bold" for="contactEmail">Your Email</label>
+                                <input type="email" id="contactEmail" class="form-control custom-input" placeholder="e.g. john@email.com" required>
+                                <div class="invalid-feedback">Please provide a valid email address.</div>
+                                <div class="valid-feedback">Email verified!</div>
                             </div>
                         </div>
                         <div class="mb-3">
@@ -769,8 +845,10 @@
                             </div>
                         </div>
                         <div class="mb-4">
-                            <label class="form-label text-white fw-bold">Message</label>
-                            <textarea id="contactMessage" class="form-control custom-input" rows="4" maxlength="500" placeholder="How can I help you?" required></textarea>
+                            <label class="form-label text-white fw-bold" for="contactMessage">Message</label>
+                            <textarea id="contactMessage" class="form-control custom-input" rows="4" maxlength="500" placeholder="How can I help you?" required minlength="10"></textarea>
+                            <div class="invalid-feedback">Please write a message with at least 10 characters.</div>
+                            <div class="valid-feedback">Message ready!</div>
                             <div class="char-counter"><span id="charCount">0</span> / 500 characters</div>
                         </div>
                         <button type="submit" class="btn btn-custom-orange w-100 py-3 fw-bold fs-5">
@@ -788,7 +866,7 @@
     </footer>
 
     <!-- Back to Top Button -->
-    <button onclick="scrollToTop()" id="backToTopBtn" title="Go to top">
+    <button onclick="scrollToTop()" id="backToTopBtn" data-bs-toggle="tooltip" data-bs-placement="left" title="Back to top">
         <i class="fas fa-arrow-up"></i>
     </button>
 
@@ -865,7 +943,7 @@
                 <span class="lightbox-caption text-silver" id="lightboxCaption">Gallery Photo</span>
             </div>
             <div class="lightbox-img-wrapper">
-                <img id="lightboxImg" src="slide1.jpg" alt="Gallery Photo">
+                <img id="lightboxImg" src="images/slide1.jpg" alt="Gallery Photo">
                 <button class="lightbox-nav-btn prev" id="lightboxPrevBtn" title="Previous (Left Arrow)"><i class="fas fa-chevron-left"></i></button>
                 <button class="lightbox-nav-btn next" id="lightboxNextBtn" title="Next (Right Arrow)"><i class="fas fa-chevron-right"></i></button>
             </div>
@@ -1026,7 +1104,7 @@
     <div id="prankOverlay" class="prank-overlay d-none">
         <div class="prank-content text-center p-4 p-md-5 glass-card border-danger">
             <h1 class="text-danger fw-bold mb-4 blink-text">⚠️ SYSTEM COMPROMISED</h1>
-            <img src="lol.gif" alt="You got pranked!" class="img-fluid mb-4 rounded shadow-lg" style="max-width: 350px;">
+            <img src="images/lol.gif" alt="You got pranked!" class="img-fluid mb-4 rounded shadow-lg" style="max-width: 350px;">
             <br>
             <button id="killPcBtn" class="btn btn-danger btn-lg fw-bold px-5 py-3 pulse-btn">
                 <i class="fas fa-skull me-2"></i> KILL PC
@@ -1043,7 +1121,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
 
 </body>
 </html>
