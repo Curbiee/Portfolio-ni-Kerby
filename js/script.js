@@ -14,25 +14,26 @@ if (videoModal && introVideo) {
 // ==========================================
 // 2. SCROLL PROGRESS BAR & BACK TO TOP BUTTON
 // ==========================================
-window.onscroll = function() {
+window.addEventListener('scroll', () => {
     handleScrollFeatures();
     revealOnScroll(); 
     if (typeof updateActiveNavbarTab === 'function') {
         updateActiveNavbarTab();
     }
-};
+}, { passive: true });
 
 function handleScrollFeatures() {
-    let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-    let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    let scrolled = (winScroll / height) * 100;
-    document.getElementById("myBar").style.width = scrolled + "%";
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    if (height > 0) {
+        const scrolled = (winScroll / height) * 100;
+        const myBar = document.getElementById("myBar");
+        if (myBar) myBar.style.width = scrolled + "%";
+    }
 
-    let topBtn = document.getElementById("backToTopBtn");
-    if (winScroll > 500) {
-        topBtn.style.display = "block";
-    } else {
-        topBtn.style.display = "none";
+    const topBtn = document.getElementById("backToTopBtn");
+    if (topBtn) {
+        topBtn.style.display = winScroll > 500 ? "block" : "none";
     }
 }
 
@@ -43,7 +44,10 @@ function scrollToTop() {
 // ==========================================
 // 3. DYNAMIC FOOTER YEAR
 // ==========================================
-document.getElementById('currentYear').textContent = new Date().getFullYear();
+const currentYearEl = document.getElementById('currentYear');
+if (currentYearEl) {
+    currentYearEl.textContent = new Date().getFullYear();
+}
 
 // ==========================================
 // 4. TYPEWRITER EFFECT
@@ -53,10 +57,14 @@ let i = 0;
 let timer;
 
 function typingEffect() {
+    const typewriterEl = document.getElementById('typewriter');
+    if (!typewriterEl) return;
+
     let word = words[i].split("");
     let loopTyping = function() {
+        if (!typewriterEl) return;
         if (word.length > 0) {
-            document.getElementById('typewriter').innerHTML += word.shift();
+            typewriterEl.textContent += word.shift();
         } else {
             setTimeout(deletingEffect, 2000); 
             return false;
@@ -67,11 +75,15 @@ function typingEffect() {
 }
 
 function deletingEffect() {
+    const typewriterEl = document.getElementById('typewriter');
+    if (!typewriterEl) return;
+
     let word = words[i].split("");
     let loopDeleting = function() {
+        if (!typewriterEl) return;
         if (word.length > 0) {
             word.pop();
-            document.getElementById('typewriter').innerHTML = word.join("");
+            typewriterEl.textContent = word.join("");
         } else {
             i = (words.length > (i + 1)) ? i + 1 : 0;
             typingEffect();
